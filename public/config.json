@@ -1,0 +1,79 @@
+{
+  "key": "38e0899d-d8c8-457b-8df6-6b6c59da74c0",
+  "metaData": {
+    "icon": "./images/bell_icon.jpg",
+    "iconSmall": "./images/bell_icon.jpg"
+  },
+  "type": "REST",
+  "lang": {
+    "en-US": {
+      "name": "REST Activity (Workflow API v1.1)",
+      "description": "An example REST activity using workflow API v1.1 format."
+    }
+  },
+  "workflowApiVersion": "1.1",
+  "configurationArguments": {
+    "applicationExtensionKey": "38e0899d-d8c8-457b-8df6-6b6c59da74c0",
+    "save": {
+      "url": "https://sample-custom-activity.herokuapp.com/activity/save",
+      "verb": "POST",
+      "body": "",
+      "useJwt": true,
+      "customerKey": "<EXTERNAL KEY OF THE SALT KEY FOR THE JWT>"
+    },
+    "publish": {
+      "url": "https://sample-custom-activity.herokuapp.com/activity/publish",
+      "verb": "POST",
+      "body": "",
+      "useJwt": true,
+      "customerKey": "<EXTERNAL KEY OF THE SALT KEY FOR THE JWT>"
+    },
+    "validate": {
+      "url": "https://sample-custom-activity.herokuapp.com/activity/validate",
+      "verb": "POST",
+      "body": "",
+      "useJwt": true,
+      "customerKey": "<EXTERNAL KEY OF THE SALT KEY FOR THE JWT>"
+    }
+  },
+  "wizardSteps": [
+    {
+      "key": "eventdefinitionkey",
+      "label": "Event Definition Key"
+    }
+  ],
+  "userInterfaces": {
+    "configModal": {
+      "height": 500,
+      "width": 1200,
+      "fullscreen": true
+    },
+    "runningHover": {
+      "url": "runningHover.html"
+    }
+  },
+  "arguments": {
+    "execute": {
+      "inArguments": [
+        {
+          "inputs": "{\"customerId\":  \"{{Contact.Attribute.CATest.LoyaltyID}}\"}"
+        }
+      ],
+      "url": "https://sample-custom-activity.herokuapp.com/activity/execute",
+      "verb": "POST",
+      "body": "",
+      "header": "",
+      "format": "json",
+      "useJwt": false,
+      "customerKey": "<EXTERNAL KEY OF THE SALT KEY FOR THE JWT>",
+      "timeout": 90000,
+      "retryCount": 5,
+      "retryDelay": 100
+    }
+  },
+  "edit": {
+    "url": "https://sample-custom-activity.herokuapp.com/index.html",
+    "height": 300,
+    "width": 900
+  }
+}

@@ -1,0 +1,13 @@
+{
+	"name": "sf-custom-activity",
+	"version": "0.0.2",
+	"description": "Backend for the Salesforce Service Cloud custom split activity",
+	"main": "backend/server.js",
+	"scripts": {
+		"start": "node backend/server.js"
+	},
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"express": "^4.15.2"
+	}	
+}

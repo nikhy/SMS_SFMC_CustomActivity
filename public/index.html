@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Custom Activity</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script data-main="js/main.js" type="text/javascript" src="js/require.js"></script>
+
+	<link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+	<div id="step1" class="step">
+		<p>Inputs for custom activity</p>
+		<div id = "col1" class="col">
+			<div id ="addCG" >
+				<label class="labelClass">Api Key</label>
+				<input class="textbox" placeholder="Enter Customer Group ID" type="text" required="required"
+					id = "apikey"
+					minlength="1" />
+			</div>
+		</div>
+		<div id = "col2" class="col">
+			<div>
+				<label class="labelClass">Program Type</label>
+				<select id="programType" name="Program Type">
+					<option value="" disabled selected hidden>Select Type of Program</option>
+					<option value="STORED_VALUE_PROGRAM">Stored Value Program</option>
+					<option value="POINTS_PROGRAM">Points Program</option>
+				</select>
+			</div>
+			<div>
+				<label class="labelClass">Program ID</label>
+				<input class="textbox" placeholder="Enter Program ID" type="text" required="required" id = "programId" minlength="1" />
+			</div>
+			<div>
+				<label class="labelClass">Adjustment Amount</label>
+				<input class="textbox" placeholder="Enter Points / Stored Values" type="number" required="required" 
+				id = "ajustmentAmount"
+				minlength="1" />
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
