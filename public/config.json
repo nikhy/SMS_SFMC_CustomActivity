@@ -14,21 +14,21 @@
   "configurationArguments": {
     "applicationExtensionKey": "66dbcb6a-867a-4214-8981-75725a011375",
     "save": {
-      "url": "https://sample-custom-activity.herokuapp.com/activity/save",
+      "url": "https://sfmc-sms-ca.herokuapp.com/activity/save",
       "verb": "POST",
       "body": "",
       "useJwt": true,
       "customerKey": "<EXTERNAL KEY OF THE SALT KEY FOR THE JWT>"
     },
     "publish": {
-      "url": "https://sample-custom-activity.herokuapp.com/activity/publish",
+      "url": "https://sfmc-sms-ca.herokuapp.com/activity/publish",
       "verb": "POST",
       "body": "",
       "useJwt": true,
       "customerKey": "<EXTERNAL KEY OF THE SALT KEY FOR THE JWT>"
     },
     "validate": {
-      "url": "https://sample-custom-activity.herokuapp.com/activity/validate",
+      "url": "https://sfmc-sms-ca.herokuapp.com/activity/validate",
       "verb": "POST",
       "body": "",
       "useJwt": true,
@@ -58,7 +58,7 @@
           "inputs": "{\"customerId\":  \"{{Contact.Attribute.CATest.LoyaltyID}}\"}"
         }
       ],
-      "url": "https://sample-custom-activity.herokuapp.com/activity/execute",
+      "url": "https://sfmc-sms-ca.herokuapp.com/activity/execute",
       "verb": "POST",
       "body": "",
       "header": "",
@@ -71,7 +71,7 @@
     }
   },
   "edit": {
-    "url": "https://sample-custom-activity.herokuapp.com/index.html",
+    "url": "https://sfmc-sms-ca.herokuapp.com/index.html",
     "height": 300,
     "width": 900
   }
