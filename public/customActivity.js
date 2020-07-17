@@ -12,62 +12,55 @@ Description: This js file contains the  module that interacts with the custom
 'use strict';
 
 define(function (require) {
-	var Postmonger = require('postmonger');
-	var connection = new Postmonger.Session();
-	var payload = {};
-	var steps = [
-		{ 'key': 'eventdefinitionkey', 'label': 'Event Definition Key' }
-	];
-	var currentStep = steps[0].key;
+  let Postmonger = require('postmonger');
+  let connection = new Postmonger.Session();
+  $(window).ready(function () {
+    connection.trigger('ready');
+    connection.trigger('requestInteraction');
+  });
 
-	$(window).ready(function () {
-		connection.trigger('ready');
-		connection.trigger('requestInteraction');
-	});
+  function initialize(config) {
+    if (config) {
+      let configInputs = JSON.parse(
+        config.arguments.execute.inArguments[0].inputs
+      );
+      $('#apikey').val(configInputs.apikey);
+    }
+    console.dir(config);
+  }
 
-	function initialize(data) {
-		if (data) {
-			payload = data;
-			var configInputs = JSON.parse(payload.arguments.execute.inArguments[0].inputs);
-			$('#cusGrpId').val(configInputs.customerGroupID);
-			$('#programType option[value="'+configInputs.programType+'"]').prop('selected', true)
-			$('#programId').val(configInputs.programID);
-			$('#ajustmentAmount').val(configInputs.ajustmentAmount);
-		}
-		console.dir(payload);
-	}
+  function onClickedNext() {
+    connection.trigger('requestInteraction');
+  }
 
-	function onClickedNext() {
-		save();
-		connection.trigger('nextStep');
-		connection.trigger('updateActivity', payload);
-	}
+  function onClickedBack() {
+    connection.trigger('prevStep');
+  }
+  function requestedInteractionHandler(config) {
+    try {
+      save(config);
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
-	function onClickedBack() {
-		connection.trigger('prevStep');
-	}
-	function requestedInteractionHandler(settings) {
-		try {
-			console.log(JSON.stringify(settings));
-		} catch (e) {
-			console.error(e);
-		}
-	}
+  function save(config) {
+	let eventDefinitionKey = config.triggers[0].metaData.eventDefinitionKey;
+    let configInputs = JSON.parse(
+      config.arguments.execute.inArguments[0].inputs
+	);
+	configInputs.phoneNumber  = '{{Event.' + eventDefinitionKey + '.PhoneNumber}}';
+	configInputs.apikey = $('#apikey').val();
+	config.arguments.execute.inArguments[0].inputs = JSON.stringify(
+		configInputs
+	);  
+    console.dir(config);
+	connection.trigger('updateActivity', config);
+    connection.trigger('nextStep');
+  }
 
-	function save() {
-		console.log('called updateActivity');
-		var configInputs = JSON.parse(payload.arguments.execute.inArguments[0].inputs);
-		configInputs.customerGroupID = $('#cusGrpId').val();
-		configInputs.programType = $('#programType').children("option:selected").val();
-		configInputs.programID = $('#programId').val();
-		configInputs.ajustmentAmount = $('#ajustmentAmount').val();
-		payload.arguments.execute.inArguments[0].inputs = JSON.stringify(configInputs);
-		payload['metaData'].isConfigured = true;
-		console.dir(payload);
-	}
-	
-	connection.on('initActivity', initialize);
-	connection.on('clickedNext', onClickedNext);
-	connection.on('clickedBack', onClickedBack);
-	connection.on('requestedInteraction', requestedInteractionHandler);
+  connection.on('initActivity', initialize);
+  connection.on('clickedNext', onClickedNext);
+  connection.on('clickedBack', onClickedBack);
+  connection.on('requestedInteraction', requestedInteractionHandler);
 });

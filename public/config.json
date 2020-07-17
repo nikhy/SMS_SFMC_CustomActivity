@@ -55,7 +55,7 @@
     "execute": {
       "inArguments": [
         {
-          "inputs": "{\"customerId\":  \"{{Contact.Attribute.CATest.LoyaltyID}}\"}"
+          "inputs": "{}"
         }
       ],
       "url": "https://sfmc-sms-ca.herokuapp.com/activity/execute",
