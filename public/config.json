@@ -1,5 +1,4 @@
 {
-  "key": "38e0899d-d8c8-457b-8df6-6b6c59da74c0",
   "metaData": {
     "icon": "./images/bell_icon.jpg",
     "iconSmall": "./images/bell_icon.jpg"
@@ -7,13 +6,13 @@
   "type": "REST",
   "lang": {
     "en-US": {
-      "name": "REST Activity (Workflow API v1.1)",
-      "description": "An example REST activity using workflow API v1.1 format."
+      "name": "SMS TextLocal Custom Activity",
+      "description": "Custom Activity to send SMS using Text local"
     }
   },
   "workflowApiVersion": "1.1",
   "configurationArguments": {
-    "applicationExtensionKey": "38e0899d-d8c8-457b-8df6-6b6c59da74c0",
+    "applicationExtensionKey": "66dbcb6a-867a-4214-8981-75725a011375",
     "save": {
       "url": "https://sample-custom-activity.herokuapp.com/activity/save",
       "verb": "POST",
