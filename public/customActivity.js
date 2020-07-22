@@ -23,19 +23,19 @@ define(function (require) {
 
   function initialize(settingsParam) {
     settings = settingsParam;
-	  eventDefinitionKey = settings.triggers[0].metaData.eventDefinitionKey;
-
     if (settingsParam) {
       let configInputs = JSON.parse(
         settingsParam.arguments.execute.inArguments[0].inputs
       );
       $('#apikey').val(configInputs.apikey);
     }
+    connection.trigger('requestInteraction');
     console.dir(settingsParam);
   }
 
   function onClickedNext() {
     connection.trigger('requestInteraction');
+    save();
   }
 
   function onClickedBack() {
@@ -43,7 +43,7 @@ define(function (require) {
   }
   function requestedInteractionHandler(config) {
     try {
-      save();
+	  eventDefinitionKey = settings.triggers[0].metaData.eventDefinitionKey;
     } catch (e) {
       console.error(e);
     }
