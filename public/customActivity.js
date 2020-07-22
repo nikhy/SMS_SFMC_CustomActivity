@@ -28,7 +28,7 @@ define(function (require) {
       );
       $('#apikey').val(configInputs.apikey);
     }
-    console.dir(settingsParam]);
+    console.dir(settingsParam);
   }
 
   function onClickedNext() {
