@@ -14,19 +14,21 @@ Description: This js file contains the  module that interacts with the custom
 define(function (require) {
   let Postmonger = require('postmonger');
   let connection = new Postmonger.Session();
+  let settings = {};
   $(window).ready(function () {
     connection.trigger('ready');
     connection.trigger('requestInteraction');
   });
 
-  function initialize(config) {
-    if (config) {
+  function initialize(settingsParam) {
+    settings = settingsParam;
+    if (settingsParam) {
       let configInputs = JSON.parse(
-        config.arguments.execute.inArguments[0].inputs
+        settingsParam.arguments.execute.inArguments[0].inputs
       );
       $('#apikey').val(configInputs.apikey);
     }
-    console.dir(config);
+    console.dir(settingsParam]);
   }
 
   function onClickedNext() {
@@ -38,24 +40,24 @@ define(function (require) {
   }
   function requestedInteractionHandler(config) {
     try {
-      save(config);
+      save();
     } catch (e) {
       console.error(e);
     }
   }
 
-  function save(config) {
-	let eventDefinitionKey = config.triggers[0].metaData.eventDefinitionKey;
+  function save() {
+	let eventDefinitionKey = settings.triggers[0].metaData.eventDefinitionKey;
     let configInputs = JSON.parse(
-      config.arguments.execute.inArguments[0].inputs
+      settings.arguments.execute.inArguments[0].inputs
 	);
 	configInputs.phoneNumber  = '{{Event.' + eventDefinitionKey + '.PhoneNumber}}';
 	configInputs.apikey = $('#apikey').val();
-	config.arguments.execute.inArguments[0].inputs = JSON.stringify(
+	settings.arguments.execute.inArguments[0].inputs = JSON.stringify(
 		configInputs
 	);  
-    console.dir(config);
-	connection.trigger('updateActivity', config);
+    console.dir(settings);
+	connection.trigger('updateActivity', settings);
     connection.trigger('nextStep');
   }
 
