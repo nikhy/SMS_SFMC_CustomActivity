@@ -15,6 +15,7 @@ define(function (require) {
   let Postmonger = require('postmonger');
   let connection = new Postmonger.Session();
   let settings = {};
+  let eventDefinitionKey;
   $(window).ready(function () {
     connection.trigger('ready');
     connection.trigger('requestInteraction');
@@ -22,6 +23,8 @@ define(function (require) {
 
   function initialize(settingsParam) {
     settings = settingsParam;
+	  eventDefinitionKey = settings.triggers[0].metaData.eventDefinitionKey;
+
     if (settingsParam) {
       let configInputs = JSON.parse(
         settingsParam.arguments.execute.inArguments[0].inputs
@@ -47,7 +50,6 @@ define(function (require) {
   }
 
   function save() {
-	let eventDefinitionKey = settings.triggers[0].metaData.eventDefinitionKey;
     let configInputs = JSON.parse(
       settings.arguments.execute.inArguments[0].inputs
 	);
