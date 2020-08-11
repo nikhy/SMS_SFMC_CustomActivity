@@ -28,6 +28,7 @@ define(function (require) {
         settingsParam.arguments.execute.inArguments[0].inputs
       );
       $('#apikey').val(configInputs.apikey);
+      $('#message').val(configInputs.message);
     }
     connection.trigger('requestInteraction');
     console.dir(settingsParam);
