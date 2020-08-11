@@ -21,7 +21,7 @@ app.use(bodyParser.json({ extended: true }));
 // Route that is called for every contact who reaches the custom split activity
 app.post('/activity/execute', async (req, res) => {
   //const apiKey = 'Kao9PENmhLk-pm9jezRlMYb5kb5vxGxHGvSQ5Z7NaM';
-  let inputs = req.inputs;
+  let inputs = JSON.parse(req.body.inArguments[0].inputs);
   const apiKey = inputs.apiKey;
   const numbers = inputs.phoneNumber;
   const message = inputs.message;
