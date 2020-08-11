@@ -34,7 +34,7 @@ app.post('/activity/execute', async (req, res) => {
   const result =  await axios
     .post('https://api.textlocal.in/send', urlEncodeJSON(payload));
 
-  console.log('Text Local result ',JSON.stringify(result));
+  console.log('Text Local result ',(result.data));
   return res.status(200).json({ success: true, res: result.data });
 });
 
