@@ -17,22 +17,19 @@
       "url": "https://sfmc-sms-ca.herokuapp.com/activity/save",
       "verb": "POST",
       "body": "",
-      "useJwt": true,
-      "customerKey": "<EXTERNAL KEY OF THE SALT KEY FOR THE JWT>"
+      "useJwt": true
     },
     "publish": {
       "url": "https://sfmc-sms-ca.herokuapp.com/activity/publish",
       "verb": "POST",
       "body": "",
-      "useJwt": true,
-      "customerKey": "<EXTERNAL KEY OF THE SALT KEY FOR THE JWT>"
+      "useJwt": true
     },
     "validate": {
       "url": "https://sfmc-sms-ca.herokuapp.com/activity/validate",
       "verb": "POST",
       "body": "",
-      "useJwt": true,
-      "customerKey": "<EXTERNAL KEY OF THE SALT KEY FOR THE JWT>"
+      "useJwt": true
     }
   },
   "wizardSteps": [

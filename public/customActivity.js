@@ -54,7 +54,8 @@ define(function (require) {
       settings.arguments.execute.inArguments[0].inputs
 	);
 	configInputs.phoneNumber  = '{{Event.' + eventDefinitionKey + '.PhoneNumber}}';
-	configInputs.apikey = $('#apikey').val();
+  configInputs.apikey = $('#apikey').val();
+  configInputs.message = $('#message').val();
 	settings.arguments.execute.inArguments[0].inputs = JSON.stringify(
 		configInputs
 	);  
