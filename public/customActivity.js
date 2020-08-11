@@ -59,7 +59,8 @@ define(function (require) {
   configInputs.message = $('#message').val();
 	settings.arguments.execute.inArguments[0].inputs = JSON.stringify(
 		configInputs
-	);  
+  );  
+	payload['metaData'].isConfigured = true;
     console.dir(settings);
 	connection.trigger('updateActivity', settings);
     connection.trigger('nextStep');
