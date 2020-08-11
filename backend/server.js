@@ -29,6 +29,7 @@ app.post('/activity/execute', async (req, res) => {
     numbers: numbers,
     message: message,
   };
+  console.log('Text Local payload ',JSON.stringify(payload))
   const result =  await axios
     .post('https://api.textlocal.in/send', urlEncodeJSON(payload));
 
