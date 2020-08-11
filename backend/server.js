@@ -29,10 +29,11 @@ app.post('/activity/execute', async (req, res) => {
     numbers: numbers,
     message: message,
   };
-  console.log('Text Local payload ',JSON.stringify(payload))
+  console.log('Text Local payload ',JSON.stringify(payload));
   const result =  await axios
     .post('https://api.textlocal.in/send', urlEncodeJSON(payload));
 
+  console.log('Text Local result ',JSON.stringify(result));
   return res.status(200).json({ success: true, res: result.data });
 });
 
