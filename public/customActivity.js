@@ -44,7 +44,7 @@ define(function (require) {
   }
   function requestedInteractionHandler(config) {
     try {
-	  eventDefinitionKey = settings.triggers[0].metaData.eventDefinitionKey;
+	  eventDefinitionKey = config.triggers[0].metaData.eventDefinitionKey;
     } catch (e) {
       console.error(e);
     }
