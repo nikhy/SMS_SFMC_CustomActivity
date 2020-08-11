@@ -60,7 +60,7 @@ define(function (require) {
 	settings.arguments.execute.inArguments[0].inputs = JSON.stringify(
 		configInputs
   );  
-	payload['metaData'].isConfigured = true;
+	settings['metaData'].isConfigured = true;
     console.dir(settings);
 	connection.trigger('updateActivity', settings);
     connection.trigger('nextStep');
