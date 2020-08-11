@@ -22,7 +22,7 @@ app.use(bodyParser.json({ extended: true }));
 app.post('/activity/execute', async (req, res) => {
   //const apiKey = 'Kao9PENmhLk-pm9jezRlMYb5kb5vxGxHGvSQ5Z7NaM';
   let inputs = JSON.parse(req.body.inArguments[0].inputs);
-  const apiKey = inputs.apiKey;
+  const apiKey = inputs.apikey;
   const numbers = inputs.phoneNumber;
   const message = inputs.message;
   const payload = {
